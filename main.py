@@ -1,4 +1,5 @@
 from random import randint
+import battleship_bot
 def nowa_plansza():
     plansza = [[0] * 10 for _ in range(10)]
     statki = [4, 3, 2]
@@ -79,3 +80,16 @@ def koniec_gry(statki):
 #     if(koniec_gry(poz)):
 #         print("koniec lol")
 #         break
+
+plansza_player, poz_player = nowa_plansza()
+plansza_bot, poz_bot = nowa_plansza()
+bot = battleship_bot.BotBattleships(10)
+
+while 1:
+    x = int(input("Podaj x"))-1
+    y = int(input("Podaj y"))-1
+    wynik = strzal(plansza_bot, poz_bot, x, y)
+
+    c, r = randint(1,8)
+    na_planszy = bot.on_board(c, r)
+
