@@ -44,7 +44,16 @@ class BotBattleships:
 
         return self.rng.choice(even or free)
 
-    #def save_result(self):
+    def save_result(self, area, answer):
+        
+        answer = answer.strip().upper()
+        if answer not in ("T", "P"):
+            raise ValueError(f"Nieznana odpowiedź: {answer!r}, oczekiwano T albo P")
+        self.cannonaded.add(area)
+        if answer == "T":
+            self.hit.add(area)
+
+        
         
 
 
